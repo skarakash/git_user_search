@@ -1,0 +1,429 @@
+@import "mixins";
+@import "variables";
+
+.main {
+  box-shadow: 0 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 24px 32px;
+  background: $white;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  .user {
+    &__info {
+      margin-bottom: 23px;
+      display: grid;
+      grid-template-columns: 89px 173px;
+      grid-auto-rows: auto;
+      row-gap: 33px;
+
+      &-avatar {
+        height: 70px;
+        border-radius: 50%;
+        margin-right: 19px;
+        @include desktop {
+          height: 117px;
+        }
+      }
+
+      &-login {
+        &-name {
+          display: block;
+          color: $gun-metal;
+          @include h3;
+          font-weight: 700;
+        }
+
+        &-nickname {
+          display: block;
+          color: $azure;
+          @include h3;
+          font-weight: 700;
+          margin-bottom: 6px;
+        }
+
+        &-joined {
+          display: block;
+          @include h4;
+          color: $slate-grey;
+        }
+
+        &-bio {
+          display: block;
+          @include h4;
+          line-height: 25px;
+          color: $queen-blue;
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+
+    &__stats {
+      padding: 18px 14px;
+      background: $ghost-white;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      margin-bottom: 24px;
+
+      &--info-label, &--followers-label, &--following-label {
+        @include h4;
+        font-size: 11px;
+        line-height: 16px;
+        display: block;
+        margin-bottom: 8px;
+        color: $queen-blue;
+      }
+
+      &--info-number, &--followers-number, &--following-number {
+        @include h3;
+        font-weight: 700;
+        color: $gun-metal;
+        display: block;
+      }
+    }
+
+    &__links {
+      & > *:not(:last-child) {
+        margin-bottom: 16px;
+      }
+
+
+
+      &--location, &--website, &--twitter, &--company {
+        display: flex;
+        align-items: center;
+
+        &.disabled {
+          .user {
+            &__links {
+              &--location-icon, &--website-icon, &--twitter-icon, &--company-icon {
+                path {
+                  fill: $disabled;
+                }
+              }
+
+              &--location-name, &--twitter-handle, &--company-name {
+                color: $disabled;
+              }
+              &--website {
+                &-link {
+                  flex-grow: 1;
+                  &-anchor {
+                    cursor: initial;
+                    text-decoration: none;
+                    color: $disabled;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &--location-icon, &--website-icon, &--twitter-icon, &--company-icon {
+        height: 20px;
+        margin-right: 20px;
+
+        path {
+          fill: $queen-blue;
+        }
+      }
+
+      &--location-name, &--website-link-anchor, &--twitter-handle, &--company-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 95%;
+        display: block;
+        flex-grow: 1;
+      }
+
+      &--location-name, &--twitter-handle, &--company-name {
+        display: block;
+        @include h4;
+        color: $queen-blue;
+      }
+
+      &--website {
+        &-link {
+          &-anchor {
+            text-decoration: none;
+            color: $queen-blue;
+            @include h4;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@include medium {
+  .main {
+    padding: 40px;
+    .user {
+      &__info {
+        grid-template-columns: 158px 334px;
+        grid-row-gap: 24px;
+        margin-bottom: 32px;
+
+        &-avatar {
+          height: 117px;
+          margin-right: 0;
+        }
+
+        &-login {
+          &-name {
+            @include h1;
+          }
+
+          &-nickname {
+            font-weight: 400;
+          }
+
+          &-joined {
+            @include h3;
+          }
+        }
+
+      }
+
+      &__bio {
+        @include h3;
+        line-height: 25px;
+        font-size: 15px;
+      }
+
+      &__stats {
+        padding: 15px 32px;
+        margin-bottom: 30px;
+
+        &--info-label, &--followers-label, &--following-label {
+          text-align: left;
+          @include h4;
+          line-height: 19px;
+        }
+
+        &--info-number, &--followers-number, &--following-number {
+          text-align: left;
+          @include h2;
+        }
+      }
+
+      &__links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        &--location-name, &--website-name, &--twitter-handle, &--company-name {
+          @include h3;
+          font-size: 15px;
+          line-height: 22px;
+        }
+
+        &--website {
+          grid-column-start: 1;
+          grid-row-start: 2;
+          &-link {
+            @include h3;
+            font-size: 15px;
+            line-height: 22px;
+            flex-grow: 1;
+            &-anchor {
+              @include h3;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+
+  .main {
+    padding: 44px 48px 52px;
+
+    .user {
+      &__info {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 80px auto;
+        row-gap: 0;
+
+        &-avatar {
+          height: 117px;
+          margin-right: initial;
+          grid-row-end: 2;
+        }
+
+        &-login {
+          &--wrapper {
+            width: 100%;
+            height: 59px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            align-items: center;
+          }
+
+          &-name {
+            @include h1;
+            margin-bottom: 2px;
+          }
+
+          &-nickname {
+            font-weight: 400;
+            grid-column-start: 1;
+            grid-row-start: 2;
+          }
+
+          &-joined {
+            @include h3;
+            grid-column-start: 2;
+            grid-row-start: 1;
+            text-align: right;
+          }
+
+          &-bio {
+            @include h3;
+            line-height: 25px;
+            font-size: 15px;
+            grid-column-start: 2;
+            grid-column-end: 3;
+          }
+        }
+      }
+
+      &__stats {
+        padding: 15px 32px;
+        margin-bottom: 37px;
+        width: 75%;
+        margin-left: auto;
+
+        &--info-label, &--followers-label, &--following-label {
+          text-align: left;
+          @include h4;
+          line-height: 19px;
+        }
+
+        &--info-number, &--followers-number, &--following-number {
+          text-align: left;
+          @include h2;
+        }
+      }
+
+      &__links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        width: 75%;
+        margin-left: auto;
+
+        &--location-name, &--twitter-handle, &--company-name {
+          @include h3;
+          font-size: 15px;
+          line-height: 22px;
+        }
+
+        &--website {
+          grid-column-start: 1;
+          grid-row-start: 2;
+          &-link {
+            flex-grow: 1;
+            &-anchor {
+              @include h3;
+              font-size: 15px;
+              line-height: 22px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.wrapper.dark {
+  .main {
+    background: $yankees-blue;
+    box-shadow: initial;
+
+    .user {
+      &__info {
+        &-login {
+          &-name, &-joined {
+            color: $dark-theme-white;
+          }
+
+          &-bio {
+            color: $white-opacity075;
+          }
+        }
+      }
+
+      &__stats {
+        background: $dark-gum-metal;
+
+        &--info-label, &--followers-label, &--following-label {
+          color: $white-opacity075;
+        }
+
+        &--info-number, &--followers-number, &--following-number {
+          color: $dark-theme-white
+        }
+      }
+
+      &__links {
+        &--location, &--website, &--twitter, &--company {
+          &.disabled {
+            .user {
+              &__links {
+                &--location-icon, &--website-icon, &--twitter-icon, &--company-icon {
+                  path {
+                    fill: $white-opacity05;
+                  }
+                }
+
+                &--location-name, &--website-name, &--twitter-handle, &--company-name {
+                  color: $white-opacity05;
+
+                }
+                &--website {
+                  &-link {
+                    &-anchor {
+                      color: $white-opacity05;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &--location-name, &--website-name, &--twitter-handle, &--company-name {
+          color: $dark-theme-white;
+        }
+
+        &--location-icon, &--website-icon, &--twitter-icon, &--company-icon {
+          path {
+            fill: $dark-theme-white;
+          }
+        }
+
+        &--website {
+          &-link {
+            & > a {
+              color: $dark-theme-white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

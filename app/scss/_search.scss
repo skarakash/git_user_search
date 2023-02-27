@@ -1,0 +1,153 @@
+@import "variables";
+@import "mixins";
+
+.search {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  margin-bottom: 16px;
+
+  &__input {
+    width: 100%;
+    background: $white;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    height: 60px;
+    caret-color: $azure;
+    @include h3;
+    cursor: pointer;
+    padding-left: 45px;
+    padding-right: 90px;
+
+    &::placeholder {
+      color: $queen-blue;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include h4;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    background: $azure;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    height: 46px;
+    width: 84px;
+    @include h3;
+    font-weight: 700;
+    color: $dark-theme-white;
+    right: 7px;
+    top: 7px;
+    cursor: pointer;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 16px;
+    top: 20px;
+    height: 20px;
+    width: 20px;
+  }
+
+  &__error {
+    color: #F74646;
+    font-weight: 700;
+    font-size: $font-regular - 1; // 16
+    line-height: 22px;
+    position: absolute;
+    top: 65px;
+    right: 40%;
+    display: none;
+  }
+}
+
+@include medium {
+  .search {
+    margin-bottom: 24px;
+
+    &__input {
+      height: 69px;
+      padding-left: 80px;
+      padding-right: 120px;
+
+      &::placeholder {
+        @include h3;
+      }
+    }
+
+    &__button {
+      height: 50px;
+      width: 106px;
+      right: 10px;
+      top: 10px;
+    }
+
+    &__icon {
+      height: 24px;
+      width: 24px;
+      left: 32px;
+      top: 23px;
+    }
+
+    &__error {
+      top: 35%;
+      right: 22%;
+    }
+  }
+}
+
+
+@include desktop {
+  .search {
+    margin-bottom: 24px;
+
+    &__input {
+      height: 69px;
+      padding-left: 80px;
+      padding-right: 120px;
+      color: #222731;
+
+      &::placeholder {
+        @include h3;
+      }
+    }
+
+    &__button {
+      height: 50px;
+      width: 106px;
+      right: 10px;
+      top: 10px;
+    }
+
+    &__icon {
+      height: 24px;
+      width: 24px;
+      left: 32px;
+      top: 23px;
+    }
+
+    &__error {
+      top: 40%;
+      right: 20%;
+    }
+  }
+}
+
+.wrapper.dark {
+  .search {
+    box-shadow: initial;
+
+    &__input {
+      background: $yankees-blue;
+      color: $dark-theme-white;
+
+      &::placeholder {
+        color: $dark-theme-white;
+      }
+    }
+  }
+}

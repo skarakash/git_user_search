@@ -1,0 +1,79 @@
+@import "globals";
+@import "variables";
+@import "mixins";
+
+.header {
+  padding-top: 31px;
+  margin-bottom: 36px;
+  &__logo {
+    @include h1;
+    color: $gun-metal;
+  }
+  &__theme {
+    &--switcher {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: $queen-blue;
+      &:hover {
+        color: #222731;
+        .header {
+          &__theme--icon-light {
+            path {
+              fill: #222731;
+            }
+          }
+          &__theme--icon-dark {
+            path {
+              fill: #90A4D4;
+            }
+          }
+        }
+      }
+    }
+    &--icon {
+      &-light {
+        display: none;
+        path {
+          fill: $queen-blue;
+        }
+        &.active {
+          display: initial;
+        }
+      }
+      &-dark {
+        display: none;
+        path {
+          fill: $dark-theme-white;
+        }
+        &.active {
+          display: initial;
+        }
+      }
+    }
+    &--value {
+      text-transform: uppercase;
+      font-size: $font-regular;
+      line-height: 24px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      margin-right: 16px;
+    }
+  }
+}
+
+@include medium {
+  .header {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@include desktop {
+  .header {
+    width: 100%;
+    padding: 0;
+  }
+}

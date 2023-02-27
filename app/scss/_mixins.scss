@@ -1,0 +1,37 @@
+@import "variables";
+
+@mixin h1 {
+  font-weight: 700;
+  font-size: $font-large; // 26
+  line-height: 38px;
+}
+
+@mixin h2 {
+  font-weight: 700;
+  font-size: $font-big; // 22
+  line-height: 33px;
+}
+
+@mixin h3 {
+  font-weight: 400;
+  font-size: $font-regular; // 16
+  line-height: 24px;
+}
+
+@mixin h4 {
+  font-weight: 400;
+  font-size: $font-small; // 13
+  line-height: 20px;
+}
+
+@mixin medium {
+  @media only screen and (min-width: 623px) and (max-width: 1023px){
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
+}
